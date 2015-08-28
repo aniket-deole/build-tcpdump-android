@@ -4,7 +4,7 @@
 #
 #     Title: build-tcpdump
 #    Author: Loic Poulain, loic.poulain@gmail.com (2013)
-#            Aniket Deole, aniket.deole@gmail.com (2015) 
+#            https://github.com/chatch/tcpdump-android
 #
 #   Purpose: download & build tcpdump for arm android platform
 #
@@ -12,7 +12,8 @@
 # example:
 # $ export NDK=/home/Workspace/android-ndk-r8
 # $ sh build-tcpdump
-# 
+# --------------------------------------
+# Changes by Aniket Deole (aniket.deole@gmail.com) to compile tcpdump-4.7.4
 # libpcap needs flex and bison
 # sudo apt-get install flex bison
 #
