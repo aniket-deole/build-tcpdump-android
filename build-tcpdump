@@ -17,6 +17,9 @@
 # libpcap needs flex and bison
 # sudo apt-get install flex bison
 #
+# --------------------------------------
+# As Android 5.0 refuses to execute anything non PIE (position independent
+# code/executable), we should add -fPIE to CFLAGS and LDFLAGS
 # functionnal
 # 	with tcpdump 4.3.0, 4.2.1
 # 	with android-ndk-r8
