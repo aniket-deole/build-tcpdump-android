@@ -3,7 +3,8 @@
 # --------------------------------------
 #
 #     Title: build-tcpdump
-#    Author: Loic Poulain, loic.poulain@gmail.com
+#    Author: Loic Poulain, loic.poulain@gmail.com (2013)
+#            Aniket Deole, aniket.deole@gmail.com (2015) 
 #
 #   Purpose: download & build tcpdump for arm android platform
 #
@@ -11,6 +12,9 @@
 # example:
 # $ export NDK=/home/Workspace/android-ndk-r8
 # $ sh build-tcpdump
+# 
+# libpcap needs flex and bison
+# sudo apt-get install flex bison
 #
 # functionnal
 # 	with tcpdump 4.3.0, 4.2.1
@@ -18,12 +22,14 @@
 # --------------------------------------
 
 # default, edit version 
-tcpdump_ver=4.4.0
-libpcap_ver=1.4.0
+tcpdump_ver=4.7.4
+libpcap_ver=1.7.4
 android_api_def=21
 
 #-------------------------------------------------------#
 ndk_dir_def=android-ndk-r9
+toolchain=arm-linux-androideabi-4.8
+host_system=linux-x86_64
 
 tcpdump_dir=tcpdump-${tcpdump_ver}
 libpcap_dir=libpcap-${libpcap_ver}
@@ -91,8 +97,8 @@ exit_error()
 		echo Toolchain already exist! Nothing to do.
 	else
 		echo Creating toolchain...
-		mkdir toolchain
-		sh ${ndk_dir}/build/tools/make-standalone-toolchain.sh --platform=android-${android_api} --install-dir=toolchain
+		mkdir -f toolchain
+		sh ${ndk_dir}/build/tools/make-standalone-toolchain.sh --platform=android-${android_api} --install-dir=toolchain --ndk-dir=${ndk_dir} --toolchain=${toolchain} --system=${host_system}
 		
 		if [ $? -ne 0 ]
 		then
